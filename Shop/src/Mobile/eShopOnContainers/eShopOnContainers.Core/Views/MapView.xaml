@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eShopOnContainers.Core.Views.MapView"
+             xmlns:viewModelBase="clr-namespace:eShopOnContainers.Core.ViewModels.Base;assembly=eShopOnContainers.Core"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand"
+                     Spacing="5">
+            <Picker HorizontalOptions="FillAndExpand"
+                    Title="Store type"
+                    ItemsSource="{Binding StoreTypeList}"
+                    SelectedItem="{Binding SelectedStoreType}"
+                    ItemDisplayBinding="{Binding Type}"/>
+            <maps:Map x:Name="StoreMap"
+                      MapType="Street" 
+                      VerticalOptions="FillAndExpand" 
+                      HorizontalOptions="FillAndExpand">
+                <maps:Map.Behaviors>
+                    <bindings:BindingPinsBehavior Value="{Binding StorePinList}"/>                    
+                </maps:Map.Behaviors>           
+            </maps:Map>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

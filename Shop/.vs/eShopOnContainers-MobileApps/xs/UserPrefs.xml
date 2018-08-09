@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{6EEB23DC-7063-4444-9AF8-90DF24F549C0}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="src/Mobile/eShopOnContainers/eShopOnContainers.iOS/AppDelegate.cs">
+    <Files>
+      <File FileName="src/Mobile/eShopOnContainers/eShopOnContainers.iOS/AppDelegate.cs" Line="13" Column="82" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.src.Mobile_220Apps.Targets.eShopOnContainers.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0B2E9695-1900-4158-B188-430F12173D55" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.src.Mobile_220Apps.Targets.eShopOnContainers.Droid PreferredExecutionTarget="Android.BH904D1D08" />
+</Properties>

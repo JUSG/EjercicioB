@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eShopOnContainers.Core.Views.AddProductView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:behaviors="clr-namespace:eShopOnContainers.Core.Behaviors;assembly=eShopOnContainers.Core" 
+             xmlns:viewModelBase="clr-namespace:eShopOnContainers.Core.ViewModels.Base;assembly=eShopOnContainers.Core"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             Title="Add product">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Padding="0"
+                  Margin="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="250"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <!--IMAGE-->
+                <ffimageloading:CachedImage 
+                                Grid.Row="0"
+                                Source="{Binding PictureUri}"     
+                                Aspect="AspectFill">
+                    <ffimageloading:CachedImage.LoadingPlaceholder>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="iOS, Android" Value="default_product" />
+                            <On Platform="UWP, WinRT, WinPhone" Value="Assets/default_product.png" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.LoadingPlaceholder>
+                    <ffimageloading:CachedImage.ErrorPlaceholder>
+                        <OnPlatform x:TypeArguments="ImageSource">
+                            <On Platform="iOS, Android" Value="noimage" />
+                            <On Platform="UWP, WinRT, WinPhone" Value="Assets/noimage.png" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.ErrorPlaceholder>
+                </ffimageloading:CachedImage>
+                <!--ENTRIES-->                 
+                <StackLayout Grid.Row="1"
+                             Padding="15,10"
+                             VerticalOptions="FillAndExpand">
+                    <Entry HorizontalOptions="FillAndExpand"
+                           Text="{Binding ProductName}"
+                           Placeholder="Name">
+                        <Entry.Behaviors>
+                            <behaviors:ValidateTextEntryBehavior x:Name="NameBehavior"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry HorizontalOptions="FillAndExpand"
+                           Text="{Binding ProductDescription}"
+                           Placeholder="Description">
+                        <Entry.Behaviors>
+                            <behaviors:ValidateTextEntryBehavior x:Name="DescriptionBehavior"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Picker HorizontalOptions="FillAndExpand"
+                            Title="Brand"
+                            ItemsSource="{Binding BrandList}"
+                            SelectedItem="{Binding SelectedBrand}"
+                            ItemDisplayBinding="{Binding Brand}"/>
+                    <Picker HorizontalOptions="FillAndExpand"
+                            Title="Type"
+                            ItemsSource="{Binding TypeList}"
+                            SelectedItem="{Binding SelectedType}"
+                            ItemDisplayBinding="{Binding Type}"/>
+                    <Entry HorizontalOptions="FillAndExpand"
+                           Text="{Binding ProductPrice, StringFormat='${0:N}'}"
+                           Placeholder="Price"
+                           Keyboard="Numeric"/>                  
+                </StackLayout>
+                <!--ADD BUTTON-->
+                <Button Grid.Row="2"
+                        BackgroundColor="LightGray"
+                        IsEnabled="False"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        TextColor="White"
+                        Text="Add Product"                           
+                        Command="{Binding AddToCatalogCommand}">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference NameBehavior}, Path=TextValid}" Value="True"/>
+                                <BindingCondition Binding="{Binding Source={x:Reference DescriptionBehavior}, Path=TextValid}" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BackgroundColor" Value="Green"/>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>               
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

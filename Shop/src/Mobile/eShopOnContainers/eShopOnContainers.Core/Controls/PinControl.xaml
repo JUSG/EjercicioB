@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"              
+             x:Class="eShopOnContainers.Core.Controls.PinControl"
+             WidthRequest="40" 
+             HeightRequest="40"             
+             AnchorX="0.5" 
+             AnchorY="1.0">
+    <AbsoluteLayout VerticalOptions="FillAndExpand" 
+                    HorizontalOptions="FillAndExpand">
+        <Image x:Name="PinImage"                
+               Source="store_pin"                
+               AbsoluteLayout.LayoutBounds="0, 0, 37, 37" 
+               AbsoluteLayout.LayoutFlags="None" />
+    </AbsoluteLayout>
+</StackLayout>
